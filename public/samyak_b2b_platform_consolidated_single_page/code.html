@@ -1,0 +1,555 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth" style=""><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samyak B2B Platform - Single Page Scrollytelling</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Montserrat:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            navy: {
+              DEFAULT: '#1E293B',
+              dark: '#0F172A',
+            },
+            cyan: {
+              DEFAULT: '#0EA5E9',
+              bright: '#06B6D4',
+              hover: '#0284C7',
+              soft: '#E0F2FE',
+            },
+            bgsoft: '#F3F4F6',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1E293B;
+      background-color: #FFFFFF;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+    }
+    /* Scroll reveal subtle transition */
+    .reveal-section {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-section.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Stagger gallery items */
+    .stagger-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .stagger-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .glass-nav {
+      backdrop-filter: blur(16px);
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-white text-navy antialiased selection:bg-cyan-soft selection:text-cyan-hover">
+
+  <!-- 1. FLOATING PILL NAVBAR -->
+  <header class="fixed top-5 inset-x-0 z-50 flex justify-center px-4">
+    <nav class="glass-nav rounded-full px-5 py-3 flex items-center justify-between gap-6 border border-slate-200/70 max-w-5xl w-full">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2 group flex-shrink-0">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuABskF2lQfpHRojQH_EGby8dHL76f7S_29IwlzwLbabrchuvZZWe7z_CWOgb61Ip4nfxQd4sVe8KtLsG_cq9rchpchiE1D2DMCpBRq4o0WiYT_xmH8jAsepdtj7xscHqVoiKBJVaAxNKZbNElBT0RREc08qrYRvx2H_XjLdG_yrN6JKZpoA-ELjLqSQ5CbXDsA9m-kmhCfX1n1U3ze9hEZZXQm_URRvBtswnKI-As17R9MZUyggc4_H9oawQ0LOoQ3Prg" alt="Samyak Logo" class="h-10 md:h-12 w-auto object-contain">
+        <span class="font-heading font-bold text-navy text-lg tracking-tight group-hover:text-cyan transition-colors">Samyak</span>
+      </a>
+
+      <!-- Center Links (Anchor smooth-scroll targets) -->
+      <div class="hidden md:flex items-center gap-1 text-sm font-medium text-slate-600">
+        <a href="#hero" class="nav-link px-3.5 py-1.5 rounded-full hover:text-navy hover:bg-slate-100 transition-all">Home</a>
+        <a href="#statistics" class="nav-link px-3.5 py-1.5 rounded-full hover:text-navy hover:bg-slate-100 transition-all">About</a>
+        <a href="#industries" class="nav-link px-3.5 py-1.5 rounded-full hover:text-navy hover:bg-slate-100 transition-all">Industries</a>
+        <a href="#technology" class="nav-link px-3.5 py-1.5 rounded-full hover:text-navy hover:bg-slate-100 transition-all">Technology &amp; Quality</a>
+        <a href="#success-stories" class="nav-link px-3.5 py-1.5 rounded-full hover:text-navy hover:bg-slate-100 transition-all">Success Stories</a>
+      </div>
+
+      <!-- Right Action -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="bg-cyan hover:bg-cyan-hover text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all transform active:scale-95 flex items-center gap-2">
+          Request Quote
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="w-full">
+
+    <!-- PAGE 1: HERO & INTERACTIVE PRODUCT (LANDING VIEW) -->
+    <section id="hero" class="min-h-screen pt-32 pb-20 px-4 md:px-8 flex flex-col items-center justify-between max-w-6xl mx-auto reveal-section revealed">
+      <!-- Centered Hero Typography -->
+      <div class="text-center mt-6">
+        <p class="font-heading text-sm md:text-base font-semibold tracking-widest text-slate-500 uppercase mb-2">INNOVATIVE</p>
+        <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl font-black text-cyan tracking-tight leading-none mb-3">
+          B2B LABELS
+        </h1>
+        <p class="font-heading text-sm md:text-base font-semibold tracking-widest text-slate-500 uppercase">FOR EVERY INDUSTRY</p>
+      </div>
+
+      <!-- Interactive 3D Centerpiece -->
+      <div class="relative w-full max-w-3xl my-10 flex flex-col items-center">
+        <!-- Center Jar Mockup -->
+        <div id="jar-container" class="relative cursor-grab active:cursor-grabbing select-none transition-transform duration-300">
+          <img id="jar-image" src="https://lh3.googleusercontent.com/aida/AEtjO1WNA5D5ydUV62hWD76Z8nm3O4MEd2_CDA9S4naELLxiNYUy6Y1geKxceUdBFs6N0OoJ6Z1VOKJj-9rP95WiSpGdUUZ49Pwm9jXiwqEZHhhwBSQK69E3vJIy4dOAGDHfd9NNgmv1Q0W0YLFlQE7mrCwf4wBYTjYrh2ZDkY67VfisgVWbRbnB0zAUyy9UtjECCLJijCngOiz5myvw9-kNAVJ_rQDrWYKZdjojExVBtQNJ4FmbjNIWT4E-BQw" alt="3D Whey Protein Jar Packaging Mockup" class="w-72 md:w-84 max-h-[380px] object-contain drop-shadow-2xl mx-auto pointer-events-none">
+          
+          <!-- Rotation Pill Hint -->
+          <div class="mt-4 flex justify-center">
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/90 backdrop-blur rounded-full text-xs font-semibold text-slate-600 shadow-md border border-slate-100">
+              <svg class="w-3.5 h-3.5 text-cyan animate-spin" style="animation-duration: 8s;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+              </svg>
+              Drag to rotate 3D
+            </span>
+          </div>
+        </div>
+
+        <!-- Dynamic Floating Pill Tags around the Jar -->
+        <!-- Left Side Tags -->
+        <div class="hidden sm:flex flex-col gap-3 absolute left-0 top-6 items-start" id="tags-left"><div class="tag-pill bg-white text-navy font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-md border border-slate-100 transition-all duration-300 hover:scale-105">
+            Micro Printing for Security
+          </div>
+          <div class="tag-pill bg-white text-navy font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-md border border-slate-100 transition-all duration-300 hover:scale-105">
+            Food Grade Adhesive
+          </div>
+          <div class="tag-pill bg-white text-navy font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-md border border-slate-100 transition-all duration-300 hover:scale-105">
+            Hologram for Non Duplicacy
+          </div>
+          <div class="tag-pill bg-white text-navy font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-md border border-slate-100 transition-all duration-300 hover:scale-105">
+            Variable Printing
+          </div></div>
+
+        <!-- Right Side Tags -->
+        <div class="hidden sm:flex flex-col gap-3 absolute right-0 top-6 items-end" id="tags-right"><div class="tag-pill bg-white text-navy font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-md border border-slate-100 transition-all duration-300 hover:scale-105">
+            Touch Me Feel the Texture
+          </div>
+          <div class="tag-pill bg-white text-navy font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-md border border-slate-100 transition-all duration-300 hover:scale-105">
+            Drip Off Effect
+          </div>
+          <div class="tag-pill bg-white text-navy font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-md border border-slate-100 transition-all duration-300 hover:scale-105">
+            Gold/Silver Foiling
+          </div></div>
+
+        <!-- Mobile Tags Layout (wrap underneath) -->
+        <div class="flex sm:hidden flex-wrap justify-center gap-2 mt-4 max-w-sm"><span class="bg-white text-navy font-medium text-xs px-3 py-1.5 rounded-full shadow-sm border border-slate-100">Micro Printing for Security</span>
+          <span class="bg-white text-navy font-medium text-xs px-3 py-1.5 rounded-full shadow-sm border border-slate-100">Food Grade Adhesive</span>
+          <span class="bg-white text-navy font-medium text-xs px-3 py-1.5 rounded-full shadow-sm border border-slate-100">Hologram for Non Duplicacy</span>
+          <span class="bg-white text-navy font-medium text-xs px-3 py-1.5 rounded-full shadow-sm border border-slate-100">Touch Me Feel the Texture</span>
+          <span class="bg-white text-navy font-medium text-xs px-3 py-1.5 rounded-full shadow-sm border border-slate-100">Drip Off Effect</span>
+          <span class="bg-white text-navy font-medium text-xs px-3 py-1.5 rounded-full shadow-sm border border-slate-100">Gold/Silver Foiling</span>
+          <span class="bg-white text-navy font-medium text-xs px-3 py-1.5 rounded-full shadow-sm border border-slate-100">Variable Printing</span></div>
+      </div>
+
+      <!-- Bottom Hero Actions & Verbatim Copy -->
+      <div class="flex flex-col items-center gap-4 text-center mt-auto max-w-2xl">
+        <p class="text-xs md:text-sm text-slate-500 leading-relaxed font-normal">
+          Pharma, FMCG, IML, Electronics &amp; Industrial Security labels—delivered with precision, compliance and speed at scale.
+        </p>
+        <div class="flex flex-row gap-4 mt-2">
+          <a href="#contact" class="bg-cyan hover:bg-cyan-hover text-white text-sm font-semibold px-7 py-3 rounded-full shadow-md hover:shadow-lg transition-all">
+            Get a Quote
+          </a>
+          <a href="#industries" class="bg-slate-100 hover:bg-slate-200 text-navy text-sm font-semibold px-7 py-3 rounded-full transition-all">
+            Explore Industries
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: STATISTICS & TRUST SIGNALS -->
+    <section id="statistics" class="py-24 bg-bgsoft px-4 md:px-8 w-full border-y border-slate-200/60 reveal-section revealed">
+      <div class="max-w-6xl mx-auto space-y-16">
+        
+        <!-- Statistics Bar (4 Distinct Rounded Cards) -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-white rounded-3xl p-8 shadow-xl border border-slate-100 text-center flex flex-col items-center justify-center transition-transform hover:-translate-y-1">
+            <span class="font-heading text-4xl lg:text-5xl font-extrabold text-navy">15+</span>
+            <span class="text-xs md:text-sm text-slate-500 font-medium mt-2">years of experience</span>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white rounded-3xl p-8 shadow-xl border border-slate-100 text-center flex flex-col items-center justify-center transition-transform hover:-translate-y-1">
+            <span class="font-heading text-4xl lg:text-5xl font-extrabold text-navy">100+</span>
+            <span class="text-xs md:text-sm text-slate-500 font-medium mt-2">enterprise clients</span>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white rounded-3xl p-8 shadow-xl border border-slate-100 text-center flex flex-col items-center justify-center transition-transform hover:-translate-y-1">
+            <span class="font-heading text-4xl lg:text-5xl font-extrabold text-navy">50+</span>
+            <span class="text-xs md:text-sm text-slate-500 font-medium mt-2">label types</span>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-white rounded-3xl p-8 shadow-xl border border-slate-100 text-center flex flex-col items-center justify-center transition-transform hover:-translate-y-1">
+            <span class="font-heading text-4xl lg:text-5xl font-extrabold text-navy">8+</span>
+            <span class="text-xs md:text-sm text-slate-500 font-medium mt-2">countries served</span>
+          </div>
+        </div>
+
+        <!-- Media Container (Embedded Corporate Video) -->
+        <div class="max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl bg-navy border border-slate-800">
+          <div class="relative w-full aspect-video">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&amp;rel=0" title="Corporate Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Trust Marquee/Grid -->
+        <div class="flex flex-col items-center gap-8 pt-4">
+          <h2 class="font-heading text-2xl md:text-3xl font-bold text-navy text-center">
+            Trusted by Leading Brands
+          </h2>
+          <!-- Monochrome Brand Logos -->
+          <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-75 grayscale hover:grayscale-0 transition-all">
+            <span class="font-heading font-black text-2xl tracking-tighter text-slate-600">amazon</span>
+            <span class="font-heading font-black text-2xl tracking-tight text-slate-600">Volkswagen</span>
+            <span class="font-heading font-black text-2xl tracking-tight text-slate-600">DMart</span>
+            <span class="font-heading font-extrabold text-xl tracking-normal text-slate-600">ADITYA BIRLA GROUP</span>
+          </div>
+          <!-- Action: Cyan Learn More Pill Button -->
+          <a href="#industries" class="bg-cyan hover:bg-cyan-hover text-white text-sm font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all">
+            Learn More
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAGE 3: INDUSTRIES WE SERVE -->
+    <section id="industries" class="py-24 px-4 md:px-8 max-w-6xl mx-auto w-full reveal-section revealed">
+      <!-- Header Block -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-6 mb-12">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-navy">
+          Industries We Serve
+        </h2>
+        <a href="#contact" class="bg-cyan hover:bg-cyan-hover text-white text-sm font-semibold px-6 py-2.5 rounded-full shadow-md transition-all self-start sm:self-auto">
+          Explore More
+        </a>
+      </div>
+
+      <!-- Card Grid: Exactly 3 cards strictly matching design.md -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8"><!-- Card 1: Pharma Labels -->
+        <div class="flex flex-col rounded-3xl shadow-lg overflow-hidden bg-white border border-slate-100 hover:shadow-xl transition-shadow">
+          <img src="https://lh3.googleusercontent.com/aida/AEtjO1VX_Erdw7hbBQlSOAhRWIOlxv44g6PPfzOGOpZIfkWlcwnjOi71rixFAx8wsf2iwE5GSVeyvmvBKSfBFVYDVoeoIvDsv-UM7RlNU0bVsCmsUZi4CRvkOXVWDMuFor16YfGrz5VxeH12Oso271kNwaJ0R4zJPDOwGH-YcRVM8_ZMCM6wFoKbI-WJL5frnZIgWoBqE1y8jFiTGqms-fpoglwnRBD8GbB4erRPgJZ91qsv3xNYApZJlndYS-I" alt="Pharma Labels" class="w-full h-48 object-cover">
+          <div class="p-6 flex flex-col flex-1 gap-2">
+            <h3 class="font-heading font-bold text-xl text-navy">Pharma Labels</h3>
+            <p class="text-xs text-slate-500 font-normal leading-relaxed whitespace-normal break-words overflow-visible">Tamper-proof, compliant, sterile-ready.</p>
+            <div class="mt-auto pt-6">
+              <a href="#contact" class="inline-block bg-cyan hover:bg-cyan-hover text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-sm transition-all">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: FMCG Labels -->
+        <div class="flex flex-col rounded-3xl shadow-lg overflow-hidden bg-white border border-slate-100 hover:shadow-xl transition-shadow">
+          <img src="https://lh3.googleusercontent.com/aida/AEtjO1UrPqcGDhweL2BNxI-6rnCltT8kU2uQ365saWuBQq9LCH8hKI72I7WWk1jWGmv_gtfCrWqCNvGJoWhRPVVWuwJg34Pm6NbMJxd3oxvM08j1iEmGBAlmRrCnTWwx_jMtb4ulPRygnsL1_srP_ATDxggyctCSss1ES3d7eyRruAH1pstwlNR0bpueRWRTXpwzu7Mnwz8X_uO5vEF7kbg0-u0bMgnnK98Kda6WG1GvV-hPQafWhQxYxtNYywQ" alt="FMCG Labels" class="w-full h-48 object-cover">
+          <div class="p-6 flex flex-col flex-1 gap-2">
+            <h3 class="font-heading font-bold text-xl text-navy">FMCG Labels</h3>
+            <p class="text-xs text-slate-500 font-normal leading-relaxed whitespace-normal break-words overflow-visible">Shelf-impact with speed &amp; scale.</p>
+            <div class="mt-auto pt-6">
+              <a href="#contact" class="inline-block bg-cyan hover:bg-cyan-hover text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-sm transition-all">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Liquor Label Solutions -->
+        <div class="flex flex-col rounded-3xl shadow-lg overflow-hidden bg-white border border-slate-100 hover:shadow-xl transition-shadow">
+          <img src="https://lh3.googleusercontent.com/aida/AEtjO1WNA5D5ydUV62hWD76Z8nm3O4MEd2_CDA9S4naELLxiNYUy6Y1geKxceUdBFs6N0OoJ6Z1VOKJj-9rP95WiSpGdUUZ49Pwm9jXiwqEZHhhwBSQK69E3vJIy4dOAGDHfd9NNgmv1Q0W0YLFlQE7mrCwf4wBYTjYrh2ZDkY67VfisgVWbRbnB0zAUyy9UtjECCLJijCngOiz5myvw9-kNAVJ_rQDrWYKZdjojExVBtQNJ4FmbjNIWT4E-BQw" alt="Liquor Label Solutions" class="w-full h-48 object-cover bg-slate-50">
+          <div class="p-6 flex flex-col flex-1 gap-2">
+            <h3 class="font-heading font-bold text-xl text-navy">Liquor Label Solutions</h3>
+            <p class="text-xs text-slate-500 font-normal leading-relaxed whitespace-normal break-words overflow-visible">Durable, brand-focused labels maintaining clarity from bottling to consumers.</p>
+            <div class="mt-auto pt-6">
+              <a href="#contact" class="inline-block bg-cyan hover:bg-cyan-hover text-white text-xs font-semibold px-5 py-2.5 rounded-full shadow-sm transition-all">
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div></div>
+    </section>
+
+    <!-- PAGE 4: TECHNOLOGY AND QUALITY -->
+    <section id="technology" class="py-24 bg-bgsoft px-4 md:px-8 w-full border-y border-slate-200/60 reveal-section revealed">
+      <div class="max-w-6xl mx-auto">
+        
+        <!-- Visual Sequence: Image Gallery Grid with Stagger Reveal -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="tech-gallery">
+          <div class="stagger-item rounded-3xl overflow-hidden shadow-xl border border-slate-100 bg-white revealed">
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1UrPqcGDhweL2BNxI-6rnCltT8kU2uQ365saWuBQq9LCH8hKI72I7WWk1jWGmv_gtfCrWqCNvGJoWhRPVVWuwJg34Pm6NbMJxd3oxvM08j1iEmGBAlmRrCnTWwx_jMtb4ulPRygnsL1_srP_ATDxggyctCSss1ES3d7eyRruAH1pstwlNR0bpueRWRTXpwzu7Mnwz8X_uO5vEF7kbg0-u0bMgnnK98Kda6WG1GvV-hPQafWhQxYxtNYywQ" alt="Flexo Printing Line" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500">
+          </div>
+          <div class="stagger-item rounded-3xl overflow-hidden shadow-xl border border-slate-100 bg-white revealed">
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1VX_Erdw7hbBQlSOAhRWIOlxv44g6PPfzOGOpZIfkWlcwnjOi71rixFAx8wsf2iwE5GSVeyvmvBKSfBFVYDVoeoIvDsv-UM7RlNU0bVsCmsUZi4CRvkOXVWDMuFor16YfGrz5VxeH12Oso271kNwaJ0R4zJPDOwGH-YcRVM8_ZMCM6wFoKbI-WJL5frnZIgWoBqE1y8jFiTGqms-fpoglwnRBD8GbB4erRPgJZ91qsv3xNYApZJlndYS-I" alt="Quality Verification" class="w-full h-72 object-cover hover:scale-105 transition-transform duration-500">
+          </div>
+        </div>
+
+        <!-- Content Block (Centered) -->
+        <div class="max-w-4xl mx-auto text-center flex flex-col items-center gap-6 mt-16">
+          <h2 class="font-heading text-2xl md:text-3xl font-bold text-navy">
+            Technology and Quality
+          </h2>
+          <!-- Body Text (Strict Verbatim Copy) -->
+          <p class="text-navy text-base md:text-lg leading-relaxed font-medium whitespace-normal break-words overflow-visible">Two fully-equipped flexo lines (8C/6C), high precision servo, turret slitter-rewinder, automatic core cutters, epoxy flooring, clean room conditions, cloud ERP, and a fully equipped QC Lab &amp; Ink Kitchen.</p>
+
+          <!-- Feature List -->
+          <div class="flex flex-row flex-wrap justify-center gap-3"><span class="bg-white text-navy font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-sm border border-slate-200">
+              Food &amp; Pharma Friendly
+            </span>
+            <span class="bg-white text-navy font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-sm border border-slate-200">
+              Secure Printing Protocols
+            </span>
+            <span class="bg-white text-navy font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-sm border border-slate-200">
+              Cloud-based ERP
+            </span>
+            <span class="bg-white text-navy font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-sm border border-slate-200">
+              Clean, Dust-free Env.
+            </span></div>
+
+          <!-- Action: Cyan Read More Pill Button -->
+          <a href="#success-stories" class="bg-cyan hover:bg-cyan-hover text-white text-sm font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-lg transition-all mt-2">
+            Read More
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAGE 5: SUCCESS STORIES -->
+    <section id="success-stories" class="py-24 px-4 md:px-8 max-w-6xl mx-auto w-full reveal-section revealed">
+      <!-- Header Block -->
+      <div class="text-center mb-16">
+        <p class="font-heading text-xs md:text-sm font-bold tracking-widest text-cyan uppercase mb-2">OUR JOURNAL</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-navy">Our Success Stories</h2>
+      </div>
+
+      <!-- Dual-Card Layout with Interstitial UI Button -->
+      <div class="relative flex flex-col md:flex-row justify-center items-stretch gap-8 max-w-5xl mx-auto">
+        
+        <!-- Left Card (Receives content below image per spec) -->
+        <div class="flex-1 flex flex-col rounded-3xl shadow-xl overflow-hidden bg-white border border-slate-100">
+          <img src="https://lh3.googleusercontent.com/aida/AEtjO1VX_Erdw7hbBQlSOAhRWIOlxv44g6PPfzOGOpZIfkWlcwnjOi71rixFAx8wsf2iwE5GSVeyvmvBKSfBFVYDVoeoIvDsv-UM7RlNU0bVsCmsUZi4CRvkOXVWDMuFor16YfGrz5VxeH12Oso271kNwaJ0R4zJPDOwGH-YcRVM8_ZMCM6wFoKbI-WJL5frnZIgWoBqE1y8jFiTGqms-fpoglwnRBD8GbB4erRPgJZ91qsv3xNYApZJlndYS-I" alt="Pharma Counterfeit Reduction Case" class="w-full h-80 object-cover">
+          <div class="p-8 flex flex-col gap-2">
+            <h3 class="font-heading font-bold text-2xl text-navy">Pharma Counterfeit Reduction</h3>
+            <p class="text-sm text-slate-500 font-normal leading-relaxed whitespace-normal break-words overflow-visible">Deployed holographic + QR serialisation to cut counterfeiting by 60% for a top-10 pharma client.</p>
+          </div>
+        </div>
+
+        <!-- Interstitial Circular Cyan Button with Diagonal Arrow positioned dead-center between cards -->
+        <a href="#contact" class="hidden md:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-cyan hover:bg-cyan-hover text-white rounded-full items-center justify-center shadow-xl hover:scale-110 transition-transform cursor-pointer border-4 border-white" title="Explore Case Study">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 17L17 7M17 7H7M17 7V17"></path>
+          </svg>
+        </a>
+
+        <!-- Right Card (Second massive image card) -->
+        <div class="flex-1 flex flex-col rounded-3xl shadow-xl overflow-hidden bg-white border border-slate-100">
+          <img src="https://lh3.googleusercontent.com/aida/AEtjO1UrPqcGDhweL2BNxI-6rnCltT8kU2uQ365saWuBQq9LCH8hKI72I7WWk1jWGmv_gtfCrWqCNvGJoWhRPVVWuwJg34Pm6NbMJxd3oxvM08j1iEmGBAlmRrCnTWwx_jMtb4ulPRygnsL1_srP_ATDxggyctCSss1ES3d7eyRruAH1pstwlNR0bpueRWRTXpwzu7Mnwz8X_uO5vEF7kbg0-u0bMgnnK98Kda6WG1GvV-hPQafWhQxYxtNYywQ" alt="Automated Packaging Line Case" class="w-full h-80 md:h-full object-cover min-h-[320px]">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PAGE 6: CTA BANNER & FOOTER / CONTACT -->
+    <section id="contact" class="py-20 px-4 md:px-8 max-w-6xl mx-auto w-full reveal-section revealed">
+      <!-- CTA Banner Block -->
+      <div class="flex flex-col lg:flex-row justify-between items-center w-full bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-200/80 shadow-sm gap-8">
+        <!-- Left Column -->
+        <div class="flex flex-col gap-2 max-w-xl text-center lg:text-left">
+          <h3 class="font-heading text-2xl md:text-3xl font-bold text-navy">Need Reliable Label Solutions?</h3>
+          <p class="text-slate-500 text-sm md:text-base font-normal whitespace-normal break-words overflow-visible">Request on-press samples, material charts, or a plant capability deck.</p>
+        </div>
+        <!-- Right Column -->
+        <div class="flex flex-row flex-wrap justify-center gap-4 flex-shrink-0">
+          <a href="#contact" class="bg-cyan hover:bg-cyan-hover text-white text-sm font-semibold px-7 py-3 rounded-full shadow-md hover:shadow-lg transition-all">
+            Request Samples
+          </a>
+          <a href="#contact" class="bg-white hover:bg-slate-100 text-navy border border-slate-300 text-sm font-semibold px-7 py-3 rounded-full transition-all shadow-sm">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full border-t border-slate-200 bg-white pt-16 pb-8 px-4 md:px-8">
+    <div class="max-w-6xl mx-auto">
+      <!-- 4 Column Layout -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12">
+        <!-- Col 1: Cyan Samyak Logo + Contact Info -->
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-2">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUfPpL1em1IgGitmvqNdAZEYPEtXlWBCde3tj86G0rq-hdspxDPEbRdrdx19PLGiGQ6rM5Z98xdY25yMyJo7Jasz9W2PV0uMJrP-e1iYZJ2daEDL2EvhvaYPOrOSNnx9OaQQFFM4KnPU_0Ajspt3n43FvyS4NPKpJSW2Wg6MVKHEGebjJY5GFfd9BvgI7DWwTsaSCwW8zWiyUMGW7mQBcTSKP6wGA8BvJtve9XKDBnJAGxAfK22P2nm-x4mxkLmbAFYg" alt="Samyak Logo" class="h-10 md:h-12 w-auto object-contain">
+            <span class="font-heading font-bold text-navy text-xl">Samyak Group</span>
+          </div>
+          <p class="text-xs text-slate-500 leading-relaxed font-normal">
+            Precision industrial &amp; commercial label engineering.
+          </p>
+        </div>
+
+        <!-- Col 2: Navigation Links (Industries) -->
+        <div class="flex flex-col gap-3">
+          <h4 class="font-heading font-semibold text-sm text-navy uppercase tracking-wider">Industries</h4>
+          <ul class="space-y-2 text-sm text-slate-500"><li class=""><a href="#industries" class="hover:text-cyan transition-colors">Pharma Labels</a></li>
+            <li class=""><a href="#industries" class="hover:text-cyan transition-colors">FMCG Labels</a></li>
+            <li class=""><a href="#industries" class="hover:text-cyan transition-colors">Liquor Label Solutions</a></li></ul>
+        </div>
+
+        <!-- Col 3: Navigation Links (About) -->
+        <div class="flex flex-col gap-3">
+          <h4 class="font-heading font-semibold text-sm text-navy uppercase tracking-wider">About</h4>
+          <ul class="space-y-2 text-sm text-slate-500">
+            <li class=""><a href="#statistics" class="hover:text-cyan transition-colors">Overview</a></li>
+            <li class=""><a href="#technology" class="hover:text-cyan transition-colors">Technology and Quality</a></li>
+            <li class=""><a href="#success-stories" class="hover:text-cyan transition-colors">Success Stories</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Navigation Links (Contact) -->
+        <div class="flex flex-col gap-3">
+          <h4 class="font-heading font-semibold text-sm text-navy uppercase tracking-wider">Contact</h4>
+          <ul class="space-y-2 text-sm text-slate-500">
+            <li class=""><a href="#contact" class="hover:text-cyan transition-colors">Request Samples</a></li>
+            <li class=""><a href="#contact" class="hover:text-cyan transition-colors">Contact Us</a></li>
+            <li class=""><a href="#hero" class="hover:text-cyan transition-colors">Back to Top</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="border-t border-gray-200 pt-6 text-center text-sm text-gray-500">
+        © 2026 Samyak Group. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT: Scroll animations, 3D jar dragging simulation, and nav highlighting -->
+  <script>
+    // 1. Intersection Observer for Scroll Reveals
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          // If gallery, stagger children
+          const items = entry.target.querySelectorAll('.stagger-item');
+          items.forEach((item, idx) => {
+            setTimeout(() => {
+              item.classList.add('revealed');
+            }, idx * 180);
+          });
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal-section').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // 2. Drag-to-rotate interaction for Whey Protein Jar
+    const jarContainer = document.getElementById('jar-container');
+    const jarImage = document.getElementById('jar-image');
+    let isDragging = false;
+    let startX = 0;
+    let currentRotation = 0;
+
+    if (jarContainer && jarImage) {
+      jarContainer.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        jarContainer.style.transition = 'none';
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.clientX - startX;
+        const rotateY = currentRotation + deltaX * 0.4;
+        jarImage.style.transform = `perspective(800px) rotateY(${rotateY}deg)`;
+      });
+
+      window.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        const deltaX = e.clientX - startX;
+        currentRotation = (currentRotation + deltaX * 0.4) % 360;
+        jarContainer.style.transition = 'transform 0.3s ease-out';
+      });
+
+      // Touch support
+      jarContainer.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        jarContainer.style.transition = 'none';
+      });
+
+      window.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const deltaX = e.touches[0].clientX - startX;
+        const rotateY = currentRotation + deltaX * 0.4;
+        jarImage.style.transform = `perspective(800px) rotateY(${rotateY}deg)`;
+      });
+
+      window.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        const deltaX = (e.changedTouches[0]?.clientX || startX) - startX;
+        currentRotation = (currentRotation + deltaX * 0.4) % 360;
+      });
+    }
+
+    // 3. Navigation active state sync on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollY = window.pageYOffset;
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 140;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = '#' + section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('bg-cyan-soft', 'text-cyan-hover', 'font-semibold');
+        if (link.getAttribute('href') === current) {
+          link.classList.add('bg-cyan-soft', 'text-cyan-hover', 'font-semibold');
+        }
+      });
+    });
+  </script>
+
+
+
+
+
+
+</body></html>
